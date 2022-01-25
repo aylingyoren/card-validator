@@ -1,0 +1,11 @@
+.card-body {
+    margin: 50px 0;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    border-radius: 15px;
+    background: linear-gradient(to bottom right, darkcyan, darkblue);
+    width: 600px;
+    height: 300px;
+}
+

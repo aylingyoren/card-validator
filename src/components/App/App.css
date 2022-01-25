@@ -1,0 +1,62 @@
+h1 {
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+}
+
+.dark-bg {
+  background-color: rgb(50, 50, 50);
+}
+
+.light-bg {
+  background-color: rgb(250, 250, 250);
+}
+
+.toggle-dark, .toggle-light {
+  display: flex;
+  padding: 3px;
+  border-radius: 4px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.toggle-dark {
+  background-color: rgb(50, 50, 50);
+}
+.toggle-light {
+  background-color: rgb(250, 250, 250);
+}
+.dark-mode, .light-mode {
+  margin: 3px;
+  padding: 3px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 50px;
+  text-align: center;
+}
+.dark-mode, .dark {
+  background-color: rgb(50, 50, 50);
+  color: rgb(250, 250, 250);
+}
+.light-mode, .light {
+  background-color: rgb(250, 250, 250);
+  color: rgb(50, 50, 50);
+}
+
+.box {
+  border: 1px solid rgb(50, 50, 50)
+}
+
+.header {
+  color:rgb(50, 50, 50);
+}
+
+.light-text {
+  color:rgb(250, 250, 250);
+}
+.dark-text {
+  color:rgb(50, 50, 50);
+}

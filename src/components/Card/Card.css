@@ -1,0 +1,44 @@
+.card-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-field, .submit-btn {
+    margin-bottom: 20px;
+    width: 300px;
+    height: 30px;
+}
+
+.card-field {
+
+}
+
+.expDate-cvv {
+    display: flex;
+}
+
+.card-field-label {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.expDate-field {
+    width: 70px;
+}
+
+.cvv {
+    width: 100px;
+}
+
+.cvv-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit-btn {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
