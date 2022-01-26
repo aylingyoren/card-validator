@@ -1,44 +1,78 @@
-.card-fields {
+.card-validator {
+    padding: 20px;
+    border: 1px solid rgba(50, 50, 50, .3);
+    width: 340px;
+}
+
+.light-border {
+    border: 1px solid rgba(250, 250, 250, .3);
+}
+
+.header, .dark-text {
+    color:rgb(50, 50, 50);
+}
+  
+.light-text {
+    color:rgb(250, 250, 250);
+}
+
+.card-fields, .expDate-set, .cvv-set, .cvv-field {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
+
+.card-fields, .expDate-set, .cvv-set {
+    align-items: flex-start;
 }
 
 .card-field, .submit-btn {
-    margin-bottom: 20px;
+    margin-bottom: 7px;
     width: 300px;
     height: 30px;
 }
 
-.card-field {
+.card-field-label, .err-msg {
+    font-size: 12px;
+}
 
+.card-field-label {
+    margin-bottom: 5px;
+    font-weight: 500;
 }
 
 .expDate-cvv {
     display: flex;
+    gap: 20px;
 }
 
-.card-field-label {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.expDate-field {
+.expDate-input {
     width: 70px;
 }
 
-.cvv {
-    width: 100px;
+.expDate-field {
+    display: flex;
+    gap: 7px;
 }
 
-.cvv-field {
-    display: flex;
-    flex-direction: column;
+.cvv-input {
+    width: 100px;
 }
 
 .submit-btn {
     padding: 0;
     border: none;
     cursor: pointer;
+}
+
+.err-msg {
+    margin-bottom: 20px;
+    color: rgb(199, 12, 68);
+}
+
+.light-err {
+    color: rgb(231, 102, 152);
+}
+
+.light-btn {
+    background-color: rgb(142, 238, 230);
 }

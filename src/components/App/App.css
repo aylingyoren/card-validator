@@ -3,15 +3,14 @@ h1 {
 }
 
 .App {
-  text-align: center;
-  height: 100vh;
+  padding: 0 50px;
 }
 
-.dark-bg {
+.dark-bg, .dark-mode, .dark, .toggle-dark {
   background-color: rgb(50, 50, 50);
 }
 
-.light-bg {
+.light-bg, .light-mode, .light, .toggle-light {
   background-color: rgb(250, 250, 250);
 }
 
@@ -20,14 +19,8 @@ h1 {
   padding: 3px;
   border-radius: 4px;
   position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.toggle-dark {
-  background-color: rgb(50, 50, 50);
-}
-.toggle-light {
-  background-color: rgb(250, 250, 250);
+  top: 10px;
+  right: 50px;
 }
 .dark-mode, .light-mode {
   margin: 3px;
@@ -38,25 +31,12 @@ h1 {
   text-align: center;
 }
 .dark-mode, .dark {
-  background-color: rgb(50, 50, 50);
   color: rgb(250, 250, 250);
 }
 .light-mode, .light {
-  background-color: rgb(250, 250, 250);
   color: rgb(50, 50, 50);
 }
 
 .box {
   border: 1px solid rgb(50, 50, 50)
-}
-
-.header {
-  color:rgb(50, 50, 50);
-}
-
-.light-text {
-  color:rgb(250, 250, 250);
-}
-.dark-text {
-  color:rgb(50, 50, 50);
 }
