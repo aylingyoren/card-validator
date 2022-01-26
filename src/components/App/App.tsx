@@ -13,7 +13,7 @@ function App() {
   }
   return (
     <div className={isDarkModeActive ? "App dark-bg": "App"}>
-      <div className={"box " + (isDarkModeActive ? "toggle-dark": "toggle-light")}>
+      <div className={isDarkModeActive ? "toggle-dark box-dark-border": "toggle-light box-light-border"}>
         <h4 className="light-mode" onClick={() => switchModes("light")}>
           Light
         </h4>
