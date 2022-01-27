@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import CardView from '../CardView';
 import "./Card.css";
 
-interface MyFormValues {
+export interface MyFormValues {
   cardNumber: string;
   cardHolder: string;
   CVV: string;

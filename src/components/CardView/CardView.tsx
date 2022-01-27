@@ -1,8 +1,9 @@
 import React from 'react';
+import { MyFormValues } from '../Card/Card';
 import './CardView.css';
 
 type CardViewProps = {
-  values: any;
+  values: MyFormValues;
   isDarkModeActive: boolean;
 }
 
