@@ -16,8 +16,10 @@
     color:rgb(250, 250, 250);
 }
 
-.card-fields, .expDate-set, .cvv-set, .cvv-field {
+.card-fields, .expDate-set, .cvv-set, .cvv-field, .month-field, .year-field, .expDate-cvv, .expDate-field {
     display: flex;
+}
+.card-fields, .expDate-set, .cvv-set, .cvv-field, .month-field, .year-field {
     flex-direction: column;
 }
 
@@ -41,16 +43,14 @@
 }
 
 .expDate-cvv {
-    display: flex;
     gap: 20px;
 }
 
-.expDate-input {
+.expDate-input, .month-field .err-msg, .year-field .err-msg {
     width: 70px;
 }
 
 .expDate-field {
-    display: flex;
     gap: 7px;
 }
 

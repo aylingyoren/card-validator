@@ -2,9 +2,14 @@
     position: relative;
     margin-bottom: 50px;
     border-radius: 15px;
+    border: 3px solid rgb(50, 50, 50);
     background: linear-gradient(to bottom right, darkcyan, darkblue);
     width: 500px;
     height: 300px;
+}
+
+.light-card-border {
+    border: 2px solid rgb(250, 250, 250);
 }
 
 .card-number, .card-holder, .exp-date, .visa-img, .chip-img, .cvv  {

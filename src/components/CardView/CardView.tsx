@@ -2,16 +2,14 @@ import React from 'react';
 import './CardView.css';
 
 type CardViewProps = {
-  cardNumber: string;
-  cardHolder: string;
-  CVV: string;
-  month: string;
-  year: string;
+  values: any;
+  isDarkModeActive: boolean;
 }
 
-function CardView({cardNumber, cardHolder, CVV, month, year}: CardViewProps) {
+function CardView({values, isDarkModeActive}: CardViewProps) {
+  const {cardNumber, cardHolder, month, year, CVV} = values;
   return (
-    <div className="card-body">
+    <div className={isDarkModeActive ? "card-body light-card-border" : "card-body"}>
       <h2 className="card-number">{cardNumber? `${cardNumber.slice(0,4)} ${cardNumber.slice(4,8)} ${cardNumber.slice(8,12)} ${cardNumber.slice(12,16)}`  : '0000 0000 0000 0000'}</h2>
       <div className="card-holder">{cardHolder ? cardHolder :'NAME SURNAME'}</div>
       <div className="exp-date">{month ? month  : '00'} / {year ? year :'00'}</div>
