@@ -7,11 +7,11 @@
     height: 300px;
 }
 
-.card-number, .card-holder, .exp-date, .visa-img, .chip-img  {
+.card-number, .card-holder, .exp-date, .visa-img, .chip-img, .cvv  {
     position: absolute;
 }
 
-.card-number, .card-holder, .exp-date {
+.card-number, .card-holder, .exp-date, .cvv {
     color: rgb(250, 250, 250);
 }
 
@@ -34,7 +34,7 @@
     top: 10px;
 }
 
-.card-holder, .exp-date {
+.card-holder, .exp-date, .cvv {
     bottom: 30px;
     font-size: 18px;
 } 
@@ -43,5 +43,9 @@
 }
 
 .exp-date {
-    left: 200px;
+    left: 250px;
+}
+
+.cvv {
+    right: 30px;
 }
