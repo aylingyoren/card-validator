@@ -1,7 +1,74 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  getByText,
+  fireEvent,
+  waitFor,
+} from "@testing-library/react";
+import "@testing-library/jest-dom";
+import userEvent from "@testing-library/user-event";
+import { configure, shallow } from "enzyme";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import CardView, { CardViewProps } from "../CardView";
+
+// configure({ adapter: new Adapter() });
+
+// describe("CardView component", () => {
+//   const props: CardViewProps = {
+//     values: {
+//       cardNumber: "1234567812345678",
+//       cardHolder: "Tet Test",
+//       month: "02",
+//       year: "26",
+//       CVV: "1234",
+//     },
+//     isDarkModeActive: false,
+//   };
+
+//   const component = shallow(<CardView {...props} />);
+
+//   it("renders the <CardView /> component", () => {
+//     expect(component.exists("card-body")).toBe(true); // false
+//   });
+
+//   // it('renders user name when props passed', () => {
+//   //   const link = component.find('.header__login');
+//   //   expect(link.text()).toBe(props.user.name);
+//   // });
+// });
+
+// __________
+
+const values = {
+  cardNumber: "1234567812345678",
+  cardHolder: "Alec Bow",
+  month: "02",
+  year: "23",
+  CVV: "123",
+};
+const isDarkModeActive = false;
+
+describe("CardView tests", () => {
+  it("displays card binding", async () => {
+    render(<CardView values={values} isDarkModeActive={isDarkModeActive} />);
+    await waitFor(() => {
+      expect(screen.getByText(values.cardNumber)).toBeInTheDocument();
+    });
+  });
+
+  it("displays card holder in upper case", async () => {
+    render(<CardView values={values} isDarkModeActive={isDarkModeActive} />);
+    await waitFor(() => {
+      expect(
+        screen.getByText(values.cardHolder.toUpperCase())
+      ).toBeInTheDocument();
+    });
+  });
+});
+
+// __________
 
 function renderCardView(props: Partial<CardViewProps> = {}) {
   const defaultProps: CardViewProps = {
