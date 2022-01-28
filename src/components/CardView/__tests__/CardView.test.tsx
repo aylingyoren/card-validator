@@ -42,8 +42,21 @@ test("should display a blank card form, with dark theme set by default", async (
 });
 
 it("renders correctly when there are no items", () => {
-  // const tree = renderer.create(<CardView values={} isDarkModeActive />).toJSON();
-  // expect(tree).toMatchSnapshot();
+  const defaultProps: CardViewProps = {
+    values: {
+      cardNumber: "",
+      cardHolder: "",
+      month: "",
+      year: "",
+      CVV: "",
+    },
+    isDarkModeActive: false,
+  };
+
+  const tree = renderer.create(<CardView {...defaultProps} />).toJSON();
+  expect(tree).toMatchSnapshot();
+  //   const tree = renderer.create(<CardView {...defaultProps} />).toJSON();
+  //   expect(tree).toMatchSnapshot();
 });
 
 // test("CardView changes the class when hovered", () => {

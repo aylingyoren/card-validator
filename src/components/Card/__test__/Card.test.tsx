@@ -3,7 +3,6 @@ import {
   screen,
   fireEvent,
   waitFor,
-  getByLabelText,
   getByTestId,
 } from "@testing-library/react";
 import renderer from "react-test-renderer";
@@ -18,7 +17,6 @@ function renderCard(props: Partial<CardProps> = {}) {
 
 test("should display a blank card form, with dark theme set by default", async () => {
   const { findByTestId } = renderCard();
-  //   const { container } = render(<Card isDarkModeActive />);
   const container = await findByTestId("card-fields");
 
   const submitBtn = await findByTestId("submit-btn");
@@ -33,6 +31,14 @@ test("should display a blank card form, with dark theme set by default", async (
   expect(submitBtn).not.toHaveAttribute("disabled"); // disabled === 'null' ????
   expect(header).toHaveClass("header");
   expect(header).not.toHaveClass("header light-text");
+
+  expect(container).toHaveFormValues({
+    cardNumber: "",
+    cardHolder: "",
+    month: "",
+    year: "",
+    CVV: "",
+  });
 
   render(<Card isDarkModeActive />);
 });
