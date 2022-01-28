@@ -43,7 +43,7 @@ exports[`renders correctly when there are no items 1`] = `
           00
         </div>
         <div
-          className=""
+          className="cvv"
           data-testid="cvv"
         >
           CVV: 
@@ -51,21 +51,19 @@ exports[`renders correctly when there are no items 1`] = `
         </div>
         <img
           alt="card chip"
-          className=""
+          className="chip-img"
           data-testid="chip-img"
           src="chip-card.png"
         />
         <img
           alt="visa logo"
-          className=""
+          className="visa-img"
           data-testid="visa-img"
           src="visa.png"
         />
       </div>
       <label
-        aria-labelledby="cardNumber"
         className="card-field-label light-text"
-        data-testid="cardNumber"
         htmlFor="cardNumber"
       >
         Card Number

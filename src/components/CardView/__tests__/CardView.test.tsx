@@ -29,16 +29,6 @@ test("should display a blank card form, with dark theme set by default", async (
   expect(cardNumber).toContainHTML("0000 0000 0000 0000");
   expect(cardNumber).not.toContainHTML("0000000000000000");
   expect(visaImg).toHaveAccessibleName("visa logo");
-  //   expect(cardBody).toContain({
-  //     values: {
-  //       cardNumber: "",
-  //       cardHolder: "",
-  //       month: "",
-  //       year: "",
-  //       CVV: "",
-  //     },
-  //     isDarkModeActive: false,
-  //   });
 });
 
 it("renders correctly when there are no items", () => {
@@ -55,8 +45,6 @@ it("renders correctly when there are no items", () => {
 
   const tree = renderer.create(<CardView {...defaultProps} />).toJSON();
   expect(tree).toMatchSnapshot();
-  //   const tree = renderer.create(<CardView {...defaultProps} />).toJSON();
-  //   expect(tree).toMatchSnapshot();
 });
 
 // test("CardView changes the class when hovered", () => {

@@ -25,10 +25,9 @@ test("should display a blank card form, with dark theme set by default", async (
 
   input.focus();
   expect(input).toHaveFocus();
-  //   screen.getByLabelText("Card Number"); //doesn't find it although it's in the dom
   screen.getByText("Submit");
 
-  expect(submitBtn).not.toHaveAttribute("disabled"); // disabled === 'null' ????
+  expect(submitBtn).not.toHaveAttribute("disabled");
   expect(header).toHaveClass("header");
   expect(header).not.toHaveClass("header light-text");
 
