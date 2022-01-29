@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import renderer from "react-test-renderer";
 import App from "../App";
 
 describe("App component", () => {
@@ -7,4 +8,9 @@ describe("App component", () => {
 
     expect(screen.getByText("Light")).toBeInTheDocument();
   });
+});
+
+it("renders correctly when there are no items", () => {
+  const tree = renderer.create(<App />).toJSON();
+  expect(tree).toMatchSnapshot();
 });

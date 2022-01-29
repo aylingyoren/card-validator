@@ -1,43 +1,28 @@
-import React from "react";
 import renderer from "react-test-renderer";
-import {
-  render,
-  screen,
-  getByText,
-  fireEvent,
-  waitFor,
-} from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import userEvent from "@testing-library/user-event";
-import { configure, shallow } from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { shallow } from "enzyme";
 import CardView, { CardViewProps } from "../CardView";
 
-// configure({ adapter: new Adapter() });
+describe("CardView component", () => {
+  const props: CardViewProps = {
+    values: {
+      cardNumber: "1234567812345678",
+      cardHolder: "Tet Test",
+      month: "02",
+      year: "26",
+      CVV: "1234",
+    },
+    isDarkModeActive: false,
+  };
 
-// describe("CardView component", () => {
-//   const props: CardViewProps = {
-//     values: {
-//       cardNumber: "1234567812345678",
-//       cardHolder: "Tet Test",
-//       month: "02",
-//       year: "26",
-//       CVV: "1234",
-//     },
-//     isDarkModeActive: false,
-//   };
+  const component = shallow(<CardView {...props} />);
 
-//   const component = shallow(<CardView {...props} />);
-
-//   it("renders the <CardView /> component", () => {
-//     expect(component.exists("card-body")).toBe(true); // false
-//   });
-
-//   // it('renders user name when props passed', () => {
-//   //   const link = component.find('.header__login');
-//   //   expect(link.text()).toBe(props.user.name);
-//   // });
-// });
+  it("renders card holder in upper case when given a name", () => {
+    const cardHolder = component.find(".card-holder");
+    expect(cardHolder.text()).toBe(props.values.cardHolder.toUpperCase());
+  });
+});
 
 // __________
 
