@@ -11,9 +11,11 @@ export interface MyFormValues {
   year: string;
 }
 
+type FormikSubmitHandler = (value: object) => void;
+
 export type CardProps = {
   isDarkModeActive: boolean;
-  onSubmit: Function;
+  onSubmit: FormikSubmitHandler;
 };
 
 const ValidationSchema = Yup.object({
