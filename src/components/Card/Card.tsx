@@ -1,4 +1,4 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import CardView from "../CardView";
 import "./Card.css";
@@ -13,8 +13,31 @@ export interface MyFormValues {
 
 export type CardProps = {
   isDarkModeActive: boolean;
-  onSubmit: any;
+  onSubmit: Function;
 };
+
+const ValidationSchema = Yup.object({
+  cardNumber: Yup.string()
+    .label("Card Number")
+    .matches(/^[0-9]*$/, "Only digits")
+    .max(16)
+    .min(16)
+    .required("Required"),
+  cardHolder: Yup.string()
+    .label("Card Holder")
+    .matches(/^((?:[A-Za-z]+ ?){1,3})$/, "Wrong format")
+    .max(20, "Must be 20 characters or less")
+    .min(4, "Must be 4 characters or more")
+    .required("Required"),
+  month: Yup.string().label("Expiration Date").required("Required"),
+  year: Yup.string().label("Expiration Date").required("Required"),
+  CVV: Yup.string()
+    .label("CVV Number")
+    .matches(/^[0-9]*$/, "Only digits")
+    .min(3, "Must be 3 or 4 digits")
+    .max(4, "Must be 3 or 4 digits")
+    .required("Required"),
+}); 
 
 function Card({ isDarkModeActive, onSubmit }: CardProps) {
   const initialValues: MyFormValues = {
@@ -23,6 +46,12 @@ function Card({ isDarkModeActive, onSubmit }: CardProps) {
     CVV: "",
     month: "",
     year: "",
+  };
+
+  const handleSubmit = (values: MyFormValues, { setSubmitting }: FormikHelpers<MyFormValues>) => {
+    console.log("values", values);
+    onSubmit(values);
+    setSubmitting(false);
   };
 
   return (
@@ -41,44 +70,18 @@ function Card({ isDarkModeActive, onSubmit }: CardProps) {
       >
         <Formik
           initialValues={initialValues}
-          validationSchema={Yup.object({
-            cardNumber: Yup.string()
-              .label("Card Number")
-              .matches(/^[0-9]*$/, "Only digits")
-              .max(16)
-              .min(16)
-              .required("Required"),
-            cardHolder: Yup.string()
-              .label("Card Holder")
-              .matches(/^((?:[A-Za-z]+ ?){1,3})$/, "Wrong format")
-              .max(20, "Must be 20 characters or less")
-              .min(4, "Must be 4 characters or more")
-              .required("Required"),
-            month: Yup.string().label("Expiration Date").required("Required"),
-            year: Yup.string().label("Expiration Date").required("Required"),
-            CVV: Yup.string()
-              .label("CVV Number")
-              .matches(/^[0-9]*$/, "Only digits")
-              .min(3, "Must be 3 or 4 digits")
-              .max(4, "Must be 3 or 4 digits")
-              .required("Required"),
-          })}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 500);
-          }}
+          validationSchema={ValidationSchema}
+          onSubmit={handleSubmit}
         >
           {({ values, isSubmitting }) => (
             <Form className="card-fields" data-testid="card-fields">
               <CardView values={values} isDarkModeActive={isDarkModeActive} />
               <label
-                className={
-                  isDarkModeActive
-                    ? "card-field-label light-text"
-                    : "card-field-label dark-text"
-                }
+                className={`card-field-label 
+                  ${isDarkModeActive
+                    ? " light-text"
+                    : "dark-text"}
+                `}
                 htmlFor="cardNumber"
               >
                 Card Number
@@ -97,11 +100,11 @@ function Card({ isDarkModeActive, onSubmit }: CardProps) {
               </span>
 
               <label
-                className={
-                  isDarkModeActive
-                    ? "card-field-label light-text"
-                    : "card-field-label dark-text"
-                }
+                className={`card-field-label 
+                ${isDarkModeActive
+                  ? " light-text"
+                  : "dark-text"}
+              `}
                 htmlFor="cardHolder"
               >
                 Card Holder
@@ -121,11 +124,11 @@ function Card({ isDarkModeActive, onSubmit }: CardProps) {
               <div className="expDate-cvv">
                 <div className="expDate-set">
                   <label
-                    className={
-                      isDarkModeActive
-                        ? "card-field-label light-text"
-                        : "card-field-label dark-text"
-                    }
+                    className={`card-field-label 
+                    ${isDarkModeActive
+                      ? " light-text"
+                      : "dark-text"}
+                  `}
                     htmlFor="month"
                   >
                     Expiration Date
@@ -189,11 +192,11 @@ function Card({ isDarkModeActive, onSubmit }: CardProps) {
 
                 <div className="cvv-set">
                   <label
-                    className={
-                      isDarkModeActive
-                        ? "card-field-label light-text"
-                        : "card-field-label dark-text"
-                    }
+                    className={`card-field-label 
+                    ${isDarkModeActive
+                      ? " light-text"
+                      : "dark-text"}
+                  `}
                     htmlFor="CVV"
                   >
                     CVV
@@ -215,9 +218,9 @@ function Card({ isDarkModeActive, onSubmit }: CardProps) {
               </div>
 
               <button
-                className={
-                  isDarkModeActive ? "submit-btn light-btn" : "submit-btn dark"
-                }
+                className={`submit-btn 
+                  ${isDarkModeActive ? "light-btn" : "dark"}
+                `}
                 type="submit"
                 disabled={isSubmitting}
                 data-testid="submit-btn"

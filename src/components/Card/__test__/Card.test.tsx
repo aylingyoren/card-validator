@@ -42,7 +42,7 @@ it("Success test", async () => {
 });
 
 it("should show validation on blur", async () => {
-  const { getByTestId } = render(<Card isDarkModeActive onSubmit />);
+  const { getByTestId } = render(<Card isDarkModeActive onSubmit={() => {}} />);
   const cardNumberInput = getByTestId("cardNumberInput");
   fireEvent.blur(cardNumberInput);
   await waitFor(() => {
@@ -54,7 +54,7 @@ it("should show validation on blur", async () => {
 function renderCard(props: Partial<CardProps> = {}) {
   const defaultProps: CardProps = {
     isDarkModeActive: false,
-    onSubmit: null,
+    onSubmit: () => {},
   };
   return render(<Card {...defaultProps} {...props} />);
 }
@@ -83,10 +83,10 @@ test("should display a blank card form, with dark theme set by default", async (
     CVV: "",
   });
 
-  render(<Card isDarkModeActive onSubmit />);
+  render(<Card isDarkModeActive onSubmit={() => {}} />);
 });
 
 it("renders correctly when there are no items", () => {
-  const tree = renderer.create(<Card isDarkModeActive onSubmit />).toJSON();
+  const tree = renderer.create(<Card isDarkModeActive onSubmit={() => {}} />).toJSON();
   //   expect(tree).toMatchSnapshot();
 });
