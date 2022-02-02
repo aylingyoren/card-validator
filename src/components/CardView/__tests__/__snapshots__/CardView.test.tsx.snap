@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when there are no items 1`] = `
+<div
+  className="card-body"
+  data-testid="card-body"
+>
+  <h2
+    className="card-number"
+    data-testid="card-number"
+  >
+    0000 0000 0000 0000
+  </h2>
+  <div
+    className="card-holder"
+    data-testid="card-holder"
+  >
+    NAME SURNAME
+  </div>
+  <div
+    className="exp-date"
+    data-testid="exp-date"
+  >
+    00
+     / 
+    00
+  </div>
+  <div
+    className="cvv"
+    data-testid="cvv"
+  >
+    CVV: 
+    000(0)
+  </div>
+  <img
+    alt="card chip"
+    className="chip-img"
+    data-testid="chip-img"
+    src="chip-card.png"
+  />
+  <img
+    alt="visa logo"
+    className="visa-img"
+    data-testid="visa-img"
+    src="visa.png"
+  />
+</div>
+`;
