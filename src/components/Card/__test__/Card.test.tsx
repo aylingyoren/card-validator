@@ -5,9 +5,8 @@ import {
   waitFor,
   getByTestId,
 } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import renderer from "react-test-renderer";
-import Card, { MyFormValues, CardProps } from "../Card";
+import Card, { CardProps } from "../Card";
 
 it("Success test", async () => {
   const handleSubmit = jest.fn();
@@ -16,29 +15,34 @@ it("Success test", async () => {
     <Card isDarkModeActive onSubmit={handleSubmit} />
   );
 
+  const completeForm = getByTestId("card-fields");
   const cardNumberInput = getByTestId("cardNumberInput");
   const cardHolderInput = getByTestId("cardHolderInput");
   const monthInput = getByTestId("monthInput");
   const yearInput = getByTestId("yearInput");
   const cvvInput = getByTestId("cvvInput");
-  const formSubmitButton = getByTestId("submit-btn");
 
-  userEvent.type(cardNumberInput, "1234567812345678");
-  userEvent.type(cardHolderInput, "aylin gyoren");
-  userEvent.type(monthInput, "02");
-  userEvent.type(yearInput, "23");
-  userEvent.type(cvvInput, "0123");
-  userEvent.click(formSubmitButton);
-  // ????????
-  //   await waitFor(() =>
-  //     expect(handleSubmit).toHaveBeenCalledWith({
-  //       cardNumberInput: "1234567812345678",
-  //       cardHolderInput: "aylin gyoren",
-  //       monthInput: "02",
-  //       yearInput: "23",
-  //       cvvInput: "0123",
-  //     })
-  //   );
+  await waitFor(() => {
+    fireEvent.change(cardNumberInput, {
+      target: { value: "1234567812345678" },
+    });
+    fireEvent.change(cardHolderInput, { target: { value: "aylin gyoren" } });
+    fireEvent.change(monthInput, { target: { value: "02" } });
+    fireEvent.change(yearInput, { target: { value: "23" } });
+    fireEvent.change(cvvInput, { target: { value: "0123" } });
+  });
+
+  await waitFor(() => fireEvent.submit(completeForm));
+
+  await waitFor(() =>
+    expect(handleSubmit).toHaveBeenCalledWith({
+      cardNumber: "1234567812345678",
+      cardHolder: "aylin gyoren",
+      month: "02",
+      year: "23",
+      CVV: "0123",
+    })
+  );
 });
 
 it("should show validation on blur", async () => {
@@ -87,6 +91,8 @@ test("should display a blank card form, with dark theme set by default", async (
 });
 
 it("renders correctly when there are no items", () => {
-  const tree = renderer.create(<Card isDarkModeActive onSubmit={() => {}} />).toJSON();
+  const tree = renderer
+    .create(<Card isDarkModeActive onSubmit={() => {}} />)
+    .toJSON();
   //   expect(tree).toMatchSnapshot();
 });
